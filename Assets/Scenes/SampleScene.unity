@@ -631,7 +631,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1503040512}
-  - component: {fileID: 1503040511}
+  - component: {fileID: 1503040517}
+  - component: {fileID: 1503040516}
+  - component: {fileID: 1503040515}
+  - component: {fileID: 1503040514}
+  - component: {fileID: 1503040513}
   m_Layer: 0
   m_Name: BackgroundMover
   m_TagString: Untagged
@@ -639,26 +643,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1503040511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503040510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aad543e01f17f3a43bb13eae382a7dda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnedBackground:
-  - {fileID: 7939153601188841659, guid: af7a204f433db284eac12b5b7dfeeba3, type: 3}
-  - {fileID: 2037234970073076326, guid: 0f725287fee3fb84db569d772b28c7e1, type: 3}
-  - {fileID: 7726528069271284709, guid: 5dd3b08f2dc038f4693f86c00332a279, type: 3}
-  - {fileID: 110960307540629021, guid: fe4a2ac561f3f28498485b68f4346b32, type: 3}
-  _transformParentBackground: {fileID: 1931490346}
-  _movingSpeed: 5
-  ZoneTeleport: -1930
 --- !u!4 &1503040512
 Transform:
   m_ObjectHideFlags: 0
@@ -668,12 +652,85 @@ Transform:
   m_GameObject: {fileID: 1503040510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4959817, y: 0.71284455, z: -0.15013999}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1503040513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503040510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70846af7ae79c041a9274a1bdd26e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSpawner: {fileID: 1503040516}
+  backgroundTeleport: {fileID: 1503040515}
+  backgorundMover: {fileID: 1503040514}
+--- !u!114 &1503040514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503040510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2319fac3cb62f444a9507d61307401ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movingSpeed: 5
+  BackgroundSpawner: {fileID: 1503040516}
+--- !u!114 &1503040515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503040510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61322e618a9ca4d4c8dfcd7151a99a0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BackgroundSpawner: {fileID: 1503040516}
+  ZoneTeleport: -10
+--- !u!114 &1503040516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503040510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6f9d9a7fffe891468d9d5daf5d8a087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolBackground: {fileID: 1503040517}
+  _createdReactransformBeckground: []
+--- !u!114 &1503040517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503040510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10477c040763425429614a77ad655e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabBackground: {fileID: 7939153601188841659, guid: af7a204f433db284eac12b5b7dfeeba3, type: 3}
+  _transformParentBackground: {fileID: 1931490346}
+  _poolCount: 2
+  _backgroundPool: []
 --- !u!1 &1821034736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4343721524112848262, guid: af7a204f433db284eac12b5b7dfeeba3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1920
       objectReference: {fileID: 0}
     - target: {fileID: 4343721524112848262, guid: af7a204f433db284eac12b5b7dfeeba3, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1068,6 +1125,10 @@ PrefabInstance:
     - target: {fileID: 7939153601188841659, guid: af7a204f433db284eac12b5b7dfeeba3, type: 3}
       propertyPath: m_Name
       value: SkyDay
+      objectReference: {fileID: 0}
+    - target: {fileID: 7939153601188841659, guid: af7a204f433db284eac12b5b7dfeeba3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
