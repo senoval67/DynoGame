@@ -12,23 +12,21 @@ public class PoolBackground :MonoBehaviour
     [SerializeField] public List<GameObject>_backgroundPool = new List<GameObject>();
 
 
-    public void Start()
+    public void SpawnPool()
     {
         for (int i=0;i < _poolCount ;i++) 
         {
             _backgroundPool.Add(Instantiate(_prefabBackground, _transformParentBackground));
+            
         }
     }
 
     public GameObject Get() 
     {
-        if (_backgroundPool.Count > 0) 
-        {
-            GameObject prefabbackground = _prefabBackground;
-            prefabbackground.SetActive(true);
-            return prefabbackground;
-        }
-        return Create();
+        GameObject prefabbackground = _prefabBackground;
+        prefabbackground.SetActive(true);
+        return prefabbackground;
+
     }
 
     public void Return(GameObject prefabbackground) 

@@ -16,13 +16,15 @@ namespace Senoval67.DunoGame.Background
 
         public void BackgroundTeleport()
         {
-            RectTransform LastBackground = BackgroundSpawner._createdReactransformBeckground.Last();
+
+            
             float corner = 0;
             int k = 1;
             for (int i = 0; i < BackgroundSpawner._createdReactransformBeckground.Count; i++)
             {
                 if (BackgroundSpawner._createdReactransformBeckground[i].anchoredPosition.x <= ZoneTeleport)
                 {
+                    RectTransform LastBackground = BackgroundSpawner._createdReactransformBeckground.Last();
                     RectTransform rt = LastBackground.GetComponent<RectTransform>();
                     corner += rt.sizeDelta.x * (BackgroundSpawner._createdReactransformBeckground.Count - 1);
                     BackgroundSpawner._createdReactransformBeckground[i].anchoredPosition = new Vector2(corner, rt.anchoredPosition.y);
