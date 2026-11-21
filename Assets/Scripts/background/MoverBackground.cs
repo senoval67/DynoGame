@@ -4,18 +4,23 @@ namespace Senoval67.DunoGame.Background
 {
     public class MoverBackground : MonoBehaviour
     {
-        [SerializeField] private float _movingSpeed = 5;
+        [SerializeField] public float _movingSpeed = 5;
         public SpawnBackground BackgroundSpawner;
         public void BackgorundMove()
-        {//Первая картнка
-            Vector2 positions = BackgroundSpawner._createdReactransformBeckground[0].anchoredPosition;
-            positions.x -= _movingSpeed;
-            BackgroundSpawner._createdReactransformBeckground[0].anchoredPosition = positions;
-        
-            float WightOne = BackgroundSpawner._createdReactransformBeckground[0].sizeDelta.x;
-            float PositionsOneX = BackgroundSpawner._createdReactransformBeckground[0].anchoredPosition.x;
-            float pos = PositionsOneX - WightOne + WightOne + WightOne;
-            BackgroundSpawner._createdReactransformBeckground[1].anchoredPosition = new Vector2(pos, BackgroundSpawner._createdReactransformBeckground[0].anchoredPosition.y);
+        {
+            int k = 1;
+            for (int i = 0; i < BackgroundSpawner._createdReactransformBeckground.Count-1; i++)
+            {
+                Vector2 positions = BackgroundSpawner._createdReactransformBeckground[i].anchoredPosition;
+                positions.x -= _movingSpeed;
+                BackgroundSpawner._createdReactransformBeckground[i].anchoredPosition = positions;
+
+                float WightOne = BackgroundSpawner._createdReactransformBeckground[i].sizeDelta.x;
+                float PositionsOneX = BackgroundSpawner._createdReactransformBeckground[i].anchoredPosition.x;
+                float pos = PositionsOneX - WightOne + WightOne + WightOne;
+                BackgroundSpawner._createdReactransformBeckground[k].anchoredPosition = new Vector2(pos, BackgroundSpawner._createdReactransformBeckground[0].anchoredPosition.y);
+                k++;
+            }
 
         }
     }
