@@ -10,7 +10,7 @@ public class JumpPlayer : MonoBehaviour
 
     private bool _jump;
     private bool _jumpingHeight;
-    private void FixedUpdate()
+    public void Tick()
     {
         if (transform.position.y == -1.5f && Input.GetKeyDown(KeyCode.Space))
         {
@@ -24,17 +24,17 @@ public class JumpPlayer : MonoBehaviour
         TransPlayer();
     }
 
-    public void TransPlayer() 
+    public void TransPlayer()
     {
         if (_jump)
         {
             _playerPositions += 0.1f;
-            transform.position = new Vector2(-5, _playerPositions);
+            transform.position = new Vector2(-6, _playerPositions);
         }
         if (_jumpingHeight && !_jump && transform.position.y >= -1.4f)
         {
             _playerPositions -= 0.1f;
-            transform.position = new Vector2(-5, _playerPositions);
+            transform.position = new Vector2(-6, _playerPositions);
         }
 
     }

@@ -8,12 +8,12 @@ namespace Senoval67.DunoGame.Background
         public SpawnBackground backgroundSpawner;
         public TeleportBackground backgroundTeleport;
         public MoverBackground backgorundMover;
-        private void Start()
+        public void Init()
         {
             _poolBackground.SpawnPool();
             backgroundSpawner.BackgroundSpawner();
         }
-        private void Update()
+        public void Tick()
         {
             backgroundTeleport.BackgroundTeleport();
             backgorundMover.BackgorundMove();

@@ -17,7 +17,7 @@ namespace Senoval67.DunoGame.Background
 
                 float WightOne = BackgroundSpawner._createdReactransformBeckground[i].sizeDelta.x;
                 float PositionsOneX = BackgroundSpawner._createdReactransformBeckground[i].anchoredPosition.x;
-                float pos = PositionsOneX - WightOne + WightOne + WightOne;
+                float pos = PositionsOneX - WightOne+ WightOne+ WightOne;
                 BackgroundSpawner._createdReactransformBeckground[k].anchoredPosition = new Vector2(pos, BackgroundSpawner._createdReactransformBeckground[0].anchoredPosition.y);
                 k++;
             }

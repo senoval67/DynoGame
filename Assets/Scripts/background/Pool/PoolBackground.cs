@@ -34,10 +34,4 @@ public class PoolBackground :MonoBehaviour
         prefabbackground.SetActive(false);
         _backgroundPool.Add(prefabbackground);
     }
-
-    private GameObject Create() 
-    {
-        GameObject background = Instantiate(_prefabBackground, _transformParentBackground);
-        return background;
-    }
 }

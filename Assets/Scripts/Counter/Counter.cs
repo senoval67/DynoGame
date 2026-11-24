@@ -11,18 +11,14 @@ public class Counter : MonoBehaviour
     private Text _textScore;
     private float _time;
 
-    private void Start()
+    public void Init()
     {
         _textScore =_scoreObject.GetComponent<Text>();
     }
 
-    void FixedUpdate()
+    public void ScoreCounter() 
     {
-        ScoreCounter();
-    }
 
-    private void ScoreCounter() 
-    {
         _time = Time.realtimeSinceStartup;
         _textScore.text = ((int)_time* _scoreMultipler).ToString();
     }
