@@ -4,19 +4,19 @@ namespace Senoval67.DunoGame.Background
 {
     public class MainBackground : MonoBehaviour
     {
-        public PoolBackground _poolBackground;
-        public SpawnBackground backgroundSpawner;
-        public TeleportBackground backgroundTeleport;
-        public MoverBackground backgorundMover;
+        [SerializeField] private PoolBackground _poolBackground;
+        [SerializeField] private SpawnBackground _backgroundSpawner;
+        [SerializeField] private TeleportBackground _backgroundTeleport;
+        [SerializeField] private MoverBackground _backgorundMover;
         public void Init()
         {
             _poolBackground.SpawnPool();
-            backgroundSpawner.BackgroundSpawner();
+            _backgroundSpawner.BackgroundSpawner();
         }
         public void Tick()
         {
-            backgroundTeleport.BackgroundTeleport();
-            backgorundMover.BackgorundMove();
+            _backgroundTeleport.BackgroundTeleport();
+            _backgorundMover.BackgorundMove();
         }
     }
 }

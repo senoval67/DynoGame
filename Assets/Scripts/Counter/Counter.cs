@@ -6,20 +6,12 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    [SerializeField] private GameObject _scoreObject;
-    public float _scoreMultipler =1f;
-    private Text _textScore;
+    [SerializeField] private Text _textSettings;
     private float _time;
 
-    public void Init()
+    public void Tick() 
     {
-        _textScore =_scoreObject.GetComponent<Text>();
-    }
-
-    public void ScoreCounter() 
-    {
-
         _time = Time.realtimeSinceStartup;
-        _textScore.text = ((int)_time* _scoreMultipler).ToString();
+        _textSettings.text = ((int)_time).ToString();
     }
 }

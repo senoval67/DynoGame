@@ -1,41 +1,89 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Android;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 public class JumpPlayer : MonoBehaviour
 {
-    private float _playerPositions = -1.5f;
+    [SerializeField] private AnimationCurve _jumpCurve;
 
-    private bool _jump;
-    private bool _jumpingHeight;
-    public void Tick()
+    [SerializeField] private float _jumpMaxValue = 3f;
+    [SerializeField] private float _jumpTime = 2f;
+
+    private float _playerStartPositionY;
+    private float _timer;
+
+    private bool _jump = false;
+
+    public void Init()
     {
-        if (transform.position.y == -1.5f && Input.GetKeyDown(KeyCode.Space))
-        {
-            _jump = true;
-        }
-        if (transform.position.y >= 2f)
-        {
-            _jump = false;
-            _jumpingHeight = true;
-        }
-        TransPlayer();
+        _playerStartPositionY = transform.position.y;
     }
 
-    public void TransPlayer()
+    public void Tick()
+    {
+        if (CanJump() && NeedJump())
+        {
+            _jump = true;
+            _timer = 0;
+        }
+
+        TryHandleJump();
+    }
+
+    private bool CanJump()
+    {
+        return !_jump && IsInStartPosition();
+    }
+
+    private bool NeedJump()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
+
+    private bool IsInStartPosition()
+    {
+        return transform.position.y <= _playerStartPositionY;
+    }
+
+    public void TryHandleJump()
     {
         if (_jump)
         {
-            _playerPositions += 0.1f;
-            transform.position = new Vector2(-6, _playerPositions);
+            HandleJump();
         }
-        if (_jumpingHeight && !_jump && transform.position.y >= -1.4f)
+    }
+
+    private void HandleJump()
+    {
+        _timer += Time.fixedDeltaTime;
+
+        SetPosition(GetJumpValue());
+
+        if (_timer >= _jumpTime)
         {
-            _playerPositions -= 0.1f;
-            transform.position = new Vector2(-6, _playerPositions);
+            _jump = false;
+        }
+    }
+
+    private float GetJumpValue()
+    {
+        var timer01 = _timer / _jumpTime;
+        var curveValue = GetAnimationCurveValue(Mathf.Clamp01(timer01));
+        return curveValue * _jumpMaxValue;
+    }
+
+    private void SetPosition(float jumpValue)
+    {
+        var newPos = new Vector2(transform.position.x, _playerStartPositionY + jumpValue);
+        transform.position = newPos;
+    }
+
+    private float GetAnimationCurveValue(float time)
+    {
+        if (time > 1 || time < 0f)
+        {
+            Debug.LogError(nameof(JumpPlayer) + " incorrect index");
+            return 0;
         }
 
+        return _jumpCurve.Evaluate(time);
     }
 }
